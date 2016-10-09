@@ -1,0 +1,6 @@
+*.dSYM
+*.class
+
+/LKH-2.0.7
+
+bin/compute_scores
