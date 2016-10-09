@@ -6,10 +6,12 @@ build: LKH-2.0.7/LKH bin/compute_scores shuffled_images build_message
 
 reconstruct: $(foreach img,$(IMAGES),$(patsubst %,images/reconstructed/%,$(img))) reconstruct_message
 
+double_reconstruct: $(foreach img,$(IMAGES),$(patsubst %,images/double_reconstructed/%,$(img))) double_reconstruct_message
+
 nayuki: $(foreach img,$(IMAGES),$(patsubst %,images/nayuki/%,$(img)))
 
 clean:
-	rm -rf images/*/* tsp/*/* LKH-2.0.7 nayuki/*.class bin/compute_scores
+	rm -rf images/*/* tsp/*/*.* tsp/*/double_shuffled/*/*.* LKH-2.0.7 nayuki/*.class bin/compute_scores
 
 original_images: $(foreach img,$(IMAGES),$(patsubst %,images/original/%,$(img)))
 
@@ -25,7 +27,11 @@ reconstruct_message:
 	@echo
 	@echo "The reconstructed images are in images/reconstructed"
 
-.PHONY: build reconstruct nayuki clean original_images shuffled_images build_message reconstruct_message
+double_reconstruct_message:
+	@echo
+	@echo "The reconstructed images are in images/double_reconstructed"
+
+.PHONY: build reconstruct double_reconstruct nayuki clean original_images shuffled_images build_message reconstruct_message double_reconstruct_message
 .SECONDARY: # Retain all intermediate files
 
 
@@ -43,6 +49,9 @@ tsp/instances/double_shuffled/2/%.tsp: images/semi_reconstructed/%.png bin/compu
 
 tsp/instances/%.tsp: images/shuffled/%.png bin/compute_scores
 	bin/compute_scores "$<" > "$@"
+
+tsp/tours/double_shuffled/1/%.tour: tsp/instances/double_shuffled/1/%.tsp LKH-2.0.7/LKH bin/lkh.sh
+	bin/lkh.sh "$<" "$@"
 
 tsp/tours/%.tour: tsp/instances/%.tsp LKH-2.0.7/LKH bin/lkh.sh
 	bin/lkh.sh "$<" "$@"
