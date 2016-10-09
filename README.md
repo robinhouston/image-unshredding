@@ -64,9 +64,8 @@ It is perhaps not surprising, but rather striking, that if we shuffle the column
 
 ![Blue hour in Paris, shuffled by columns and then by rows](https://robinhouston.github.io/image-unshredding/images/double_shuffled/blue-hour-paris.png)
 
-that it can nevertheless be reconstructed perfectly by applying the algorithm twice, first to the rows and then to the columns. Of course now the result may be flipped vertically as well as horizontally, but in this case we happened to get lucky twice and it comes out in the same orientation as the original:
+that it can nevertheless be reconstructed perfectly by applying the algorithm twice, first to the rows and then to the columns. Of course now the result may be flipped vertically as well as horizontally, but in this case I happened to get lucky twice and it came out in the same orientation as the original:
 
 ![Blue hour in Paris, reconstructed from the double-shuffled version](https://robinhouston.github.io/image-unshredding/images/double_reconstructed/blue-hour-paris.png)
 
-The code for the double-shuffling and reconstruction is in [the branch double-shuffling](../../tree/double-shuffling).
-
+The code for the double-shuffling and reconstruction is in [the branch double-shuffling](../../tree/double-shuffling). Switch to that branch and run `make double_reconstruct` to try it.
