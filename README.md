@@ -22,6 +22,12 @@ Subsequently Sangaline [showed that the images can be reconstructed faster and m
 
 which is quite close to the original, though you can see some misplaced columns in the sky at the right.
 
+## Image unshredding is an instance of the Travelling Salesman Problem
+
+Our task is to piece the columns of pixels together so that, over all, adjacent columns are as similar as possible. Think of the columns as being nodes in a weighted graph, with the edge-weight between two columns being a dissimilarity measure. Then we are looking for a Hamiltonian path of minimum weight in the graph. So it is an instance of the [Travelling Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem).
+
+(A small technical note: since we want a Hamiltonian path rather than a Hamiltonian cycle, we add a dummy node to the graph that has weight-0 edges to all the other nodes. If we can find a least-weight Hamiltonian cycle on this augmented graph, we remove the dummy node to obtain a least-weight Hamiltonian path on the original graph.)
+
 ## This project
 
 This project uses a [fast approximate solver](http://webhotel4.ruc.dk/~keld/research/LKH/) for the Travelling Salesman Problem to reconstruct the images quickly and perfectly.
@@ -31,6 +37,14 @@ This project uses a [fast approximate solver](http://webhotel4.ruc.dk/~keld/rese
 You will notice that the image is flipped, but otherwise reconstructed perfectly. It is impossible in general to distinguish an image from its flipped version when the columns have been shuffled, and all the algorithms mentioned here produce flipped reconstructions half the time.
 
 I believe this algorithm can reconstruct all the images in Nayuki’s demo perfectly.
+
+## The dissimilarity measure matters
+
+One interesting thing I found is that the result is sensitive to the dissimilarity measure used. I have used the same measure as the other projects mentioned here: the sum of the absolute values of the differences in the R/G/B channels, summed over all pixels in the column. If instead we use the square rather than the absolute value, the image is reconstructed incorrectly as follows:
+
+![Blue hour in Paris, reconstructed using LKH](https://robinhouston.github.io/image-unshredding/images/least-squares/blue-hour-paris.png)
+
+This is not a failure of the TSP algorithm: in fact this mangled image has a better score than the original, using the sum-of-squares measure!
 
 ## Running the code
 
