@@ -1,2 +1,4 @@
 *
 !/.gitignore
+!/double_shuffled
+!/double_shuffled/**
