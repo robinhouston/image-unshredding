@@ -68,5 +68,5 @@ that it can nevertheless be reconstructed perfectly by applying the algorithm tw
 
 ![Blue hour in Paris, reconstructed from the double-shuffled version](https://robinhouston.github.io/image-unshredding/images/double_reconstructed/blue-hour-paris.png)
 
-The code for the double-shuffling and reconstruction is in [the branch double-shuffling](tree/double-shuffling).
+The code for the double-shuffling and reconstruction is in [the branch double-shuffling](../../tree/double-shuffling).
 
