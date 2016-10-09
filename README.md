@@ -42,4 +42,4 @@ You can also run `make nayuki` to reconstruct the images using Nayuki’s simula
 
 ## Prerequisites
 
-You will need a working build environment (Make and a C compiler), and `curl` is used to download files from the web.
+You will need a working build environment (Make and a C compiler), and `curl` is used to download files from the web. You also need libpng >= 1.6 (which the Makefile assumes to be in `/usr/local`, but that is easy to change). The simpler bits of image manipulation are done using Python 2 and require the [Python Imaging Library](http://www.pythonware.com/products/pil/) or a compatible fork such as [Pillow](https://pillow.readthedocs.io/en/3.4.x/).
