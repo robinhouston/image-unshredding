@@ -57,3 +57,16 @@ You can also run `make nayuki` to reconstruct the images using Nayuki’s simula
 ## Prerequisites
 
 You will need a working build environment (Make and a C compiler), and `curl` is used to download files from the web. You also need libpng >= 1.6 (which the Makefile assumes to be in `/usr/local`, but that is easy to change). The simpler bits of image manipulation are done using Python 2 and require the [Python Imaging Library](http://www.pythonware.com/products/pil/) or a compatible fork such as [Pillow](https://pillow.readthedocs.io/en/3.4.x/).
+
+## Double-shuffling
+
+It is perhaps not surprising, but rather striking, that if we shuffle the columns and then the rows to obtain a really scrambled-looking image like this:
+
+![Blue hour in Paris, shuffled by columns and then by rows](https://robinhouston.github.io/image-unshredding/images/double_shuffled/blue-hour-paris.png)
+
+that it can nevertheless be reconstructed perfectly by applying the algorithm twice, first to the rows and then to the columns. Of course now the result may be flipped vertically as well as horizontally, but in this case we happened to get lucky twice and it comes out in the same orientation as the original:
+
+![Blue hour in Paris, reconstructed from the double-shuffled version](https://robinhouston.github.io/image-unshredding/images/double_reconstructed/blue-hour-paris.png)
+
+The code for the double-shuffling and reconstruction is in [the branch double-shuffling](tree/double-shuffling).
+
