@@ -36,7 +36,7 @@ This project uses a [fast approximate solver](http://webhotel4.ruc.dk/~keld/rese
 
 You will notice that the image is flipped, but otherwise reconstructed perfectly. It is impossible in general to distinguish an image from its flipped version when the columns have been shuffled, and all the algorithms mentioned here produce flipped reconstructions half the time.
 
-I believe this algorithm can reconstruct all the images in Nayuki’s demo perfectly.
+Apart from that, I believe this algorithm can correctly reconstruct all the images in Nayuki’s demo.
 
 ## The dissimilarity measure matters
 
